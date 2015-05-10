@@ -6,7 +6,7 @@
         jumboMode="false"
         revision="22.0.1"
         sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
-        <dex dex="D:\Android\app\sensor\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-1bc213fadddb3549cfd5db94bf08f4c8b1a98000.jar" />
+        <dex dex="D:\Android\app\sensorlock\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-1bc213fadddb3549cfd5db94bf08f4c8b1a98000.jar" />
     </item>
 
 </items>

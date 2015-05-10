@@ -41,7 +41,7 @@ ADDED from AndroidManifest.xml:14:5
 		ADDED from AndroidManifest.xml:16:9
 	android:theme
 		ADDED from AndroidManifest.xml:18:9
-activity#com.paep3nguin.proximityLock.MainActivity
+activity#com.shank.sebsorlock.MainActivity
 ADDED from AndroidManifest.xml:19:9
 	android:label
 		ADDED from AndroidManifest.xml:21:13
@@ -57,7 +57,7 @@ category#android.intent.category.LAUNCHER
 ADDED from AndroidManifest.xml:25:17
 	android:name
 		ADDED from AndroidManifest.xml:25:27
-activity#com.paep3nguin.proximityLock.PrefsActivity
+activity#com.shank.sebsorlock.PrefsActivity
 ADDED from AndroidManifest.xml:28:9
 	android:label
 		ADDED from AndroidManifest.xml:29:16
@@ -71,7 +71,7 @@ ADDED from AndroidManifest.xml:31:16
 		ADDED from AndroidManifest.xml:33:20
 	android:name
 		ADDED from AndroidManifest.xml:32:20
-receiver#com.paep3nguin.proximityLock.MyAdmin
+receiver#com.shank.sebsorlock.MyAdmin
 ADDED from AndroidManifest.xml:35:9
 	android:permission
 		ADDED from AndroidManifest.xml:36:16
@@ -93,7 +93,7 @@ action#android.app.action.DEVICE_ADMIN_DISBLED
 ADDED from AndroidManifest.xml:41:21
 	android:name
 		ADDED from AndroidManifest.xml:41:29
-service#com.paep3nguin.proximityLock.LockService
+service#com.shank.sebsorlock.LockService
 ADDED from AndroidManifest.xml:44:9
 	android:name
 		ADDED from AndroidManifest.xml:44:18

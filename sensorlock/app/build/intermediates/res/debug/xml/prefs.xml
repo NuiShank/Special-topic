@@ -55,4 +55,4 @@
         android:key="unlockBeep"
         android:summary="@string/summaryPrefSound"
         android:defaultValue="false"/>
-</PreferenceScreen><!-- From: file:/D:/Android/app/sensor/app/src/main/res/xml/prefs.xml -->
+</PreferenceScreen><!-- From: file:/D:/Android/app/sensorlock/app/src/main/res/xml/prefs.xml -->

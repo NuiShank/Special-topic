@@ -9,24 +9,24 @@
     <!-- Menu bar items -->
     <string name="titleServiceStart">開啟服務</string>
     <string name="titleServiceStop">停止服務</string>
-    <string name="titlePreferences">首頁</string>
+    <string name="titlePreferences">設定</string>
     
     <!-- Preferences -->
-    <string name="titlePrefSound">在蜂鳴鎖屏/解鎖</string>
-    <string name="summaryPrefSound">蜂鳴聲時，該設備被鎖定/解鎖通過感應鎖</string>
+    <string name="titlePrefSound">聲音</string>
+    <string name="summaryPrefSound"></string>
     
     <string name="titleLockDelay">延遲鎖屏前</string>
-    <string name="summaryLockDelay">時間顯示之前，長度鎖定以毫秒為單位</string>
+    <string name="summaryLockDelay">時間顯示之前，鎖定以毫秒為單位</string>
     
-    <string name="titleUnLockDelay">延遲開鎖前</string>
-    <string name="summaryUnLockDelay">時間顯示之前，長度解鎖以毫秒為單位</string>
+    <string name="titleUnLockDelay">延遲解屏前</string>
+    <string name="summaryUnLockDelay">時間顯示之前，解鎖以毫秒為單位</string>
     
     <string name="titleLockMethod">鎖屏方法</string>
     <string name="summaryLockMethod">選擇方法</string>
     
     <string name="dialogTitleLockMethod">選擇方法</string>
-    <string name="titleGravityRate">陀螺儀採樣率</string>
-    <string name="summaryGravityRate">低率（以毫秒為單位）提高響應速度，使用更多的電池</string>
+    <string name="titleGravityRate">陀螺儀靈敏度</string>
+    <string name="summaryGravityRate">數字越低（以毫秒為單位）提高速度，更浪費電</string>
 
     <string name="titleRotateLock">禁止在縱向模式</string>
     <string name="summaryRotateLock">禁用當手機處於縱向模式的應用程序。可用於玩遊戲</string>
@@ -34,10 +34,10 @@
     <string name="titleFaceDownLock">鎖定時面朝下</string>
     <string name="summaryFaceDownLock">鎖定配合重力感應屏幕，當設備打開面朝下</string>
     
-    <string name="titleUpsideDownLockAngle">最小角度鎖定時倒掛</string>
+    <string name="titleUpsideDownLockAngle">最小角度鎖定時顛倒</string>
     <string name="summaryUpsideDownLockAngle">90度垂直，0度是水平</string>
     
-    <string name="titleTableLockAngle">最小角度桌子上放下時鎖定</string>
+    <string name="titleTableLockAngle">最小角度，上放桌子時鎖定</string>
     <string name="summaryTableLockAngle">90度垂直，0度是水平</string>
 
     <string name="titleTablegforce">G力</string>

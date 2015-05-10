@@ -12,4 +12,4 @@
 	      android:icon="@android:drawable/ic_menu_preferences"
 	      android:title="@string/titlePreferences"
 	      android:showAsAction="ifRoom"/>
-</menu><!-- From: file:/D:/Android/app/sensor/app/src/main/res/menu/main.xml -->
+</menu><!-- From: file:/D:/Android/app/sensorlock/app/src/main/res/menu/main.xml -->
