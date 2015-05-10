@@ -1,0 +1,105 @@
+-- Merging decision tree log ---
+manifest
+ADDED from AndroidManifest.xml:2:1
+	package
+		ADDED from AndroidManifest.xml:3:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:versionName
+		ADDED from AndroidManifest.xml:5:5
+	android:versionCode
+		ADDED from AndroidManifest.xml:4:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	xmlns:android
+		ADDED from AndroidManifest.xml:2:11
+uses-sdk
+ADDED from AndroidManifest.xml:7:5
+	android:targetSdkVersion
+		ADDED from AndroidManifest.xml:9:9
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:minSdkVersion
+		ADDED from AndroidManifest.xml:8:9
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+uses-permission#android.permission.WAKE_LOCK
+ADDED from AndroidManifest.xml:11:5
+	android:name
+		ADDED from AndroidManifest.xml:11:22
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from AndroidManifest.xml:12:5
+	android:name
+		ADDED from AndroidManifest.xml:12:22
+application
+ADDED from AndroidManifest.xml:14:5
+	android:label
+		ADDED from AndroidManifest.xml:17:9
+	android:allowBackup
+		ADDED from AndroidManifest.xml:15:9
+	android:icon
+		ADDED from AndroidManifest.xml:16:9
+	android:theme
+		ADDED from AndroidManifest.xml:18:9
+activity#com.paep3nguin.proximityLock.MainActivity
+ADDED from AndroidManifest.xml:19:9
+	android:label
+		ADDED from AndroidManifest.xml:21:13
+	android:name
+		ADDED from AndroidManifest.xml:20:13
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:22:13
+action#android.intent.action.MAIN
+ADDED from AndroidManifest.xml:23:17
+	android:name
+		ADDED from AndroidManifest.xml:23:25
+category#android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:25:17
+	android:name
+		ADDED from AndroidManifest.xml:25:27
+activity#com.paep3nguin.proximityLock.PrefsActivity
+ADDED from AndroidManifest.xml:28:9
+	android:label
+		ADDED from AndroidManifest.xml:29:16
+	android:parentActivityName
+		ADDED from AndroidManifest.xml:30:16
+	android:name
+		ADDED from AndroidManifest.xml:28:19
+meta-data#android.support.PARENT_ACTIVITY
+ADDED from AndroidManifest.xml:31:16
+	android:value
+		ADDED from AndroidManifest.xml:33:20
+	android:name
+		ADDED from AndroidManifest.xml:32:20
+receiver#com.paep3nguin.proximityLock.MyAdmin
+ADDED from AndroidManifest.xml:35:9
+	android:permission
+		ADDED from AndroidManifest.xml:36:16
+	android:name
+		ADDED from AndroidManifest.xml:35:19
+meta-data#android.app.device_admin
+ADDED from AndroidManifest.xml:37:13
+	android:resource
+		ADDED from AndroidManifest.xml:38:17
+	android:name
+		ADDED from AndroidManifest.xml:37:24
+intent-filter#android.app.action.DEVICE_ADMIN_DISBLED+android.app.action.DEVICE_ADMIN_ENABLED
+ADDED from AndroidManifest.xml:39:17
+action#android.app.action.DEVICE_ADMIN_ENABLED
+ADDED from AndroidManifest.xml:40:21
+	android:name
+		ADDED from AndroidManifest.xml:40:29
+action#android.app.action.DEVICE_ADMIN_DISBLED
+ADDED from AndroidManifest.xml:41:21
+	android:name
+		ADDED from AndroidManifest.xml:41:29
+service#com.paep3nguin.proximityLock.LockService
+ADDED from AndroidManifest.xml:44:9
+	android:name
+		ADDED from AndroidManifest.xml:44:18
+intent-filter#android.intent.action.CONFIGURATION_CHANGED
+ADDED from AndroidManifest.xml:45:13
+action#android.intent.action.CONFIGURATION_CHANGED
+ADDED from AndroidManifest.xml:46:17
+	android:name
+		ADDED from AndroidManifest.xml:46:25
