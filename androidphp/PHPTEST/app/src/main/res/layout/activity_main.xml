@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="right"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="15sp"
+        android:text="X"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TextView01"
+        android:layout_margin="15sp"
+        android:text="Y"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/TextView03"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/TextView02"
+        android:layout_margin="15sp"
+        android:text="Z"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/TextView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/TextView03"
+        android:layout_margin="15sp"
+        android:text="三軸加速度 - 資料擷取"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/Gtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView1"
+        android:layout_alignRight="@+id/TextView1"
+        android:layout_below="@+id/TextView1"
+        android:layout_marginTop="19dp"
+        android:text="G力"
+        android:textSize="25sp" />
+
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Gtext"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:background="#00000000"
+        android:onClick="Oneclick"
+        android:src="@drawable/ic_power" />
+
+</RelativeLayout>
