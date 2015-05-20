@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.loveyou.shank.httpsensor" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Proximity"></activity>
+        <activity android:name=".Gyroscope"></activity>
+        <activity android:name=".Accelermeter"></activity>
+        <activity android:name=".TestPedometer"></activity>
+    </application>
+    <!-- 這裡加入可以存取網路的權限 -->
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 這裡加入可以存取IMEI的權限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+</manifest>

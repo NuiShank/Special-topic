@@ -1,0 +1,213 @@
+package com.loveyou.shank.httpsensor;
+
+
+import android.app.Activity;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.telephony.TelephonyManager;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import android.widget.ToggleButton;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.protocol.HTTP;
+import org.apache.http.util.EntityUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Proximity extends Activity implements SensorEventListener {
+    private String msgx,msgy,msgz,msg,imei;
+    private TextView text_x;
+    private TextView text_y;
+    private TextView text_z,Gtext;
+    private SensorManager aSensorManager;
+    private Sensor aSensor;
+    private int gravityRate=5000;
+    private float gravity[] = new float[3];
+    private float mAccelCurrent,mAccelLast;
+    private ToggleButton toggleButton;//切換按鈕
+
+
+    /** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.sensor);
+
+        toggleButton = (ToggleButton) findViewById(R.id.toggleButton);
+
+        text_x = (TextView)findViewById(R.id.TextView01);
+        text_y = (TextView)findViewById(R.id.TextView02);
+        text_z = (TextView)findViewById(R.id.TextView03);
+
+
+        aSensorManager=(SensorManager) getSystemService(SENSOR_SERVICE);
+        aSensorManager.registerListener(this,
+                aSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY),
+                SensorManager.SENSOR_DELAY_NORMAL);
+
+        //取得IMEI
+        TelephonyManager tM=(TelephonyManager)this.getSystemService(this.TELEPHONY_SERVICE);
+        imei = tM.getDeviceId();
+
+
+        //切換按鈕執行程式
+        toggleButton.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView,
+                                         boolean isChecked) {
+                if (isChecked) {//開啟
+                    onResume();
+
+                } else {//關閉
+                    onPause();
+                }
+            }
+        });
+
+    }
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+// TODO Auto-generated method stub
+
+    }
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+// TODO Auto-generated method stub
+        gravity[0] = event.values[0];
+        gravity[1] = event.values[1];
+        gravity[2] = event.values[2];
+        text_x.setText("X = "+gravity[0]);
+        msgx=""+gravity[0];
+        Thread x = new Thread(new sendPostRunnable(msgx));
+        x.start();
+
+    }
+    @Override
+    protected void onPause()
+    {
+// TODO Auto-generated method stub
+/* 取消註冊SensorEventListener */
+        aSensorManager.unregisterListener(this);
+
+        super.onPause();
+    }
+
+    protected void onResume() {
+
+        aSensorManager.registerListener(this,
+                aSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY),
+                SensorManager.SENSOR_DELAY_NORMAL);
+
+        super.onResume();
+    }
+
+    private String uriAPI = "http://shankmc.no-ip.org:81/sensor/Proximity/Proximity.php";
+    /** 「要更新版面」的訊息代碼 */
+    protected static final int REFRESH_DATA = 0x00000001;
+
+    /** 建立UI Thread使用的Handler，來接收其他Thread來的訊息 */
+    Handler mHandler = new Handler()
+    {
+        @Override
+        public void handleMessage(Message msg)
+        {
+            switch (msg.what)
+            {
+                // 顯示網路上抓取的資料
+                case REFRESH_DATA:
+                    String result = null;
+                    if (msg.obj instanceof String)
+                        result = (String) msg.obj;
+                    if (result != null)
+                        // 印出網路回傳的文字
+
+                        break;
+            }
+        }
+    };
+
+    class sendPostRunnable implements Runnable
+    {
+        String strTxtx = null;
+
+
+        // 建構子，設定要傳的字串
+        public sendPostRunnable(String strTxtx)
+        {
+            this.strTxtx = strTxtx;
+
+
+        }
+
+        @Override
+        public void run()
+        {
+            String result = sendPostDataToInternet(strTxtx);
+            mHandler.obtainMessage(REFRESH_DATA, result).sendToTarget();
+        }
+
+    }
+
+    private String sendPostDataToInternet(String strTxtx)
+    {
+
+		/* 建立HTTP Post連線 */
+
+        HttpPost httpRequest = new HttpPost(uriAPI);
+		/*
+		 * Post運作傳送變數必須用NameValuePair[]陣列儲存
+		 */
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+
+        params.add(new BasicNameValuePair("X", strTxtx));
+        params.add(new BasicNameValuePair("IMEI", imei));
+
+
+        try
+
+        {
+
+			/* 發出HTTP request */
+
+            httpRequest.setEntity(new UrlEncodedFormEntity(params, HTTP.UTF_8));
+			/* 取得HTTP response */
+            HttpResponse httpResponse = new DefaultHttpClient()
+                    .execute(httpRequest);
+			/* 若狀態碼為200 ok */
+            if (httpResponse.getStatusLine().getStatusCode() == 200)
+            {
+				/* 取出回應字串 */
+                String strResult = EntityUtils.toString(httpResponse
+                        .getEntity());
+                // 回傳回應字串
+                return strResult;
+            }
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+
+}
