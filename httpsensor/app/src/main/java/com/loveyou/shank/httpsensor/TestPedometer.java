@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestPedometer extends Activity implements SensorEventListener {
-    private String msgx,msgy,msgz,msg,imei;
+    private String msgs,imei;
     private TextView text_x;
     private TextView text_y;
     private TextView text_z;
@@ -97,6 +97,8 @@ public class TestPedometer extends Activity implements SensorEventListener {
                     onResume();
 
                 } else {//關閉
+                    CURRENT_SETP=0;
+                    StepPedometer.setText("0");
                     onPause();
                 }
             }
@@ -150,7 +152,10 @@ public class TestPedometer extends Activity implements SensorEventListener {
                                 CURRENT_SETP++;
                                 mLastMatch = extType;
                                 start = end;
-                                StepPedometer.setText(""+CURRENT_SETP);
+                                StepPedometer.setText("" + CURRENT_SETP);
+                                msgs=""+CURRENT_SETP;
+                                Thread x = new Thread(new sendPostRunnable(msgs));
+                                x.start();
                             }
                         } else {
                             mLastMatch = -1;
@@ -184,7 +189,7 @@ public class TestPedometer extends Activity implements SensorEventListener {
         super.onResume();
     }
 
-    private String uriAPI = "http://shankmc.no-ip.org:81/sensor/Accelermeter/Accelermeter.php";
+    private String uriAPI = "http://shankmc.no-ip.org:81/sensor/Pedometer/Pedometer.php";
     /** 「要更新版面」的訊息代碼 */
     protected static final int REFRESH_DATA = 0x00000001;
 
@@ -211,32 +216,25 @@ public class TestPedometer extends Activity implements SensorEventListener {
 
     class sendPostRunnable implements Runnable
     {
-        String strTxtx = null;
-        String strTxty = null;
-        String strTxtz = null;
-        String strTxtg = null;
-
+        String strStep = null;
 
         // 建構子，設定要傳的字串
-        public sendPostRunnable(String strTxtx,String strTxty,String strTxtz,String strTxtg)
+        public sendPostRunnable(String strStep)
         {
-            this.strTxtx = strTxtx;
-            this.strTxty = strTxty;
-            this.strTxtz = strTxtz;
-            this.strTxtg = strTxtg;
+            this.strStep = strStep;
 
         }
 
         @Override
         public void run()
         {
-            String result = sendPostDataToInternet(strTxtx, strTxty, strTxtz, strTxtg);
+            String result = sendPostDataToInternet(strStep);
             mHandler.obtainMessage(REFRESH_DATA, result).sendToTarget();
         }
 
     }
 
-    private String sendPostDataToInternet(String strTxtx,String strTxty,String strTxtz,String strTxtg)
+    private String sendPostDataToInternet(String strStep)
     {
 
 		/* 建立HTTP Post連線 */
@@ -247,10 +245,7 @@ public class TestPedometer extends Activity implements SensorEventListener {
 		 */
         List<NameValuePair> params = new ArrayList<NameValuePair>();
 
-        params.add(new BasicNameValuePair("X", strTxtx));
-        params.add(new BasicNameValuePair("Y", strTxty));
-        params.add(new BasicNameValuePair("Z", strTxtz));
-        params.add(new BasicNameValuePair("G", strTxtg));
+        params.add(new BasicNameValuePair("Step", strStep));
         params.add(new BasicNameValuePair("IMEI", imei));
 
 
