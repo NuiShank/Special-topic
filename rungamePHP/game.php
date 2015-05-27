@@ -5,7 +5,7 @@ by Trystan Lea : openenergymonitor.org : GNU GPL
 I recommend going to http://jquery.com/ for the great documentation there about all of this
 ---------------------------------------------------------------------------------------------->
 <?php
-mysql_connect("localhost","root","dear88990");//連結伺服器
+mysql_connect("localhost","","");//連結伺服器
 mysql_select_db("sensor");//選擇資料庫
 mysql_query("set names utf8");//以utf8讀取資料，讓資料可以讀取中文
 $media="run.gif";
